@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.0.2](https://github.com/true/Snapr/compare/0.0.1...0.0.2) (2025-03-13)
+
+### 🐛 Bug Fixes
+
+* Route attributes pattern ([5549284](https://github.com/true/Snapr/commit/5549284118ac8f4c822f13c4c49a2c4ef8499caf))
+
+### 👷 Continuous Integration
+
+* add Version Service ([8b6c555](https://github.com/true/Snapr/commit/8b6c555cc6b6510ed41cac410ac9d70e2e52a171))
+
 ## 0.0.1 (2025-03-13)
 
 ### ✅ Tests
