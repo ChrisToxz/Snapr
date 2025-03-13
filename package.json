@@ -17,5 +17,6 @@
     "release-it": "^18.1.2",
     "tailwindcss": "^4.0.0",
     "vite": "^6.0.11"
-  }
+  },
+  "version": "0.0.1"
 }
