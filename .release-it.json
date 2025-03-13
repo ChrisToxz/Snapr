@@ -1,0 +1,69 @@
+{
+    "$schema": "https://unpkg.com/release-it/schema/release-it.json",
+    "git": {
+        "commitMessage": "chore: release v${version}",
+        "requireBranch": "stable",
+        "requireCleanWorkingDir": false
+    },
+    "github": {
+        "release": true
+    },
+    "plugins": {
+        "@release-it/bumper": {
+            "in": "composer.json",
+            "out": "composer.json"
+        },
+        "@release-it/conventional-changelog": {
+            "context": {
+                "owner": true
+            },
+            "preset": {
+                "name": "conventionalcommits",
+                "types": [
+                    {
+                        "type": "feat",
+                        "section": "\uD83D\uDE80 Features"
+                    },
+                    {
+                        "type": "fix",
+                        "section": "\uD83D\uDC1B Bug Fixes"
+                    },
+                    {
+                        "type": "docs",
+                        "section": "\uD83D\uDCDA Documentation"
+                    },
+                    {
+                        "type": "style",
+                        "section": "\uDC8E Styles"
+                    },
+                    {
+                        "type": "refactor",
+                        "section": "\uD83D\uDCE6 Code refactoring"
+                    },
+                    {
+                        "type": "perf",
+                        "section": "⚡ Performance Improvements"
+                    },
+                    {
+                        "type": "test",
+                        "section": "✅ Tests"
+                    },
+                    {
+                        "type": "build",
+                        "section": "\uD83D\uDC9A Builds"
+                    },
+                    {
+                        "type": "ci",
+                        "section": "\uD83D\uDC77 Continuous Integration"
+                    },
+                    {
+                        "type": "chore",
+                        "section": "\uD83D\uDD27 Chores"
+                    },
+                    {}
+                ]
+            },
+            "infile": "CHANGELOG.md"
+        }
+    }
+}
