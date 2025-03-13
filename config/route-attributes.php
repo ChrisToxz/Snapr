@@ -13,11 +13,17 @@ return [
      * Optionally, you can specify group configuration by using key/values
      */
     'directories' => [
+        app_path('Http/Controllers/Web') => [
+            'prefix' => '',
+            'middleware' => 'web',
+            'not_patterns' => ['Api/*'],
+        ],
         app_path('Http/Controllers/Api/v1') => [
             'prefix' => 'api/v1',
             'middleware' => 'api',
             'as' => 'api.v1.',
         ],
+
     ],
 
     /*
