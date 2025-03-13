@@ -13,8 +13,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
+        $user = User::factory()->create([
             'username' => 'Chris',
+        ]);
+
+        $plainTextToken = 'dev-token';
+
+        $user->tokens()->create([
+            'name' => 'development',
+            'token' => hash('sha256', $plainTextToken),
+            'abilities' => ['*'],
+            'last_used_at' => null,
         ]);
     }
 }

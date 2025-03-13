@@ -14,6 +14,7 @@ return [
      */
     'directories' => [
         app_path('Http/Controllers') => [
+            'not_patterns' => ['/Api*'],
             'middleware' => 'web',
         ],
         /*
