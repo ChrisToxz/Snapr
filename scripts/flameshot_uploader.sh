@@ -42,7 +42,7 @@ main() {
         # TODO: Add filename to post
         response=$(curl \
             -s \
-            -H "Bearer: dev-token" \
+            -H "Authorization: Bearer dev-token" \
             -F "image=@${FILE}" \
             -X POST \
             ${API_URL})
