@@ -12,6 +12,11 @@ class Snap extends Model
 
     protected $fillable = ['ident', 'name', 'description', 'path'];
 
+    public function getRouteKeyName(): string
+    {
+        return 'ident';
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
