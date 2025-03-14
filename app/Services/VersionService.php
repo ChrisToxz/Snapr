@@ -61,12 +61,12 @@ class VersionService
         return explode('.', $cleanTag);
     }
 
-    public function short()
+    public function short(): string
     {
         return $this->getVersionData()['short'];
     }
 
-    public function long()
+    public function long(): string
     {
         return $this->getVersionData()['long'];
     }
