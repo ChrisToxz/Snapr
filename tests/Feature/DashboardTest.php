@@ -25,7 +25,7 @@ describe('auth', function () {
 
     it('shows message when no images are uploaded yet', function () {
         $this->get('/dashboard')
-            ->assertSeeText('No images found.');
+            ->assertSeeText('No snaps found.');
     });
 
     it('renders menu', function () {
