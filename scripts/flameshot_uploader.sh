@@ -52,6 +52,7 @@ main() {
 
         url=$(echo "${response}" | jq -r '.url')
         echo "Image URL: ${url}"
+        echo "${url}" | xclip -selection clipboard
 
         # TODO: Conditional based on response
         notify-send "File uploaded!"
@@ -64,8 +65,6 @@ main() {
 ###
 # Functions
 ###
-
-
 get_window_name() {
     local focused_id wm_class
     focused_id=$(xdotool getwindowfocus)
@@ -80,7 +79,7 @@ exec > >(while IFS= read -r line; do echo "$(date +'%Y-%m-%d %H:%M:%S') $line"; 
 
 echo "---START---"
 # TODO: Check if all required commands/packages are available.
-# jq, curl, flameshot
+# jq, curl, flameshot, xclip
 main
 echo "---END---"
 echo ""
