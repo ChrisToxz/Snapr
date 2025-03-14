@@ -50,6 +50,9 @@ main() {
         echo "Upload response:"
         echo "${response}"
 
+        url=$(echo "${response}" | jq -r '.url')
+        echo "Image URL: ${url}"
+
         # TODO: Conditional based on response
         notify-send "File uploaded!"
     else
@@ -77,6 +80,7 @@ exec > >(while IFS= read -r line; do echo "$(date +'%Y-%m-%d %H:%M:%S') $line"; 
 
 echo "---START---"
 # TODO: Check if all required commands/packages are available.
+# jq, curl, flameshot
 main
 echo "---END---"
 echo ""
