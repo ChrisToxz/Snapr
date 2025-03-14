@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('snaps', function (Blueprint $table) {
             $table->ulid('id')->primary();
             $table->string('ident')->index();
             $table->string('name');
