@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Spatie\RouteAttributes\Attributes\Delete;
 use Spatie\RouteAttributes\Attributes\Get;
+use Spatie\RouteAttributes\Attributes\Middleware;
 use Spatie\RouteAttributes\Attributes\Post;
 
+#[Middleware('guest')]
 class AuthController extends Controller
 {
     #[Get('/login', 'login')]
@@ -28,7 +30,7 @@ class AuthController extends Controller
         return redirect()->intended('/');
     }
 
-    #[Delete('/logout', 'logout')]
+    #[Delete('/logout', 'logout', withoutMiddleware: ['guest'])]
     public function destroy(Request $request): RedirectResponse
     {
         Auth::logout();
