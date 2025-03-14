@@ -20,7 +20,7 @@ return [
         ],
         app_path('Http/Controllers/Api/v1') => [
             'prefix' => 'api/v1',
-            'middleware' => 'api',
+            'middleware' => 'auth:sanctum',
             'as' => 'api.v1.',
         ],
 
