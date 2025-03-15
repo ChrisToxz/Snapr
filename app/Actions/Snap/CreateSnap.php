@@ -17,10 +17,9 @@ class CreateSnap
 
         return $request->user()->snaps()->create([
             'ident' => GenerateSnapIdentifier::run(),
-            'name' => $request->file('image')->getClientOriginalName(),
+            'title' => $request->file('image')->getClientOriginalName(),
             'description' => '',
             'path' => $file,
-        ]
-        );
+        ]);
     }
 }

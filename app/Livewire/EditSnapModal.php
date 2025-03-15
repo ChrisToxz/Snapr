@@ -11,14 +11,17 @@ class EditSnapModal extends Component
 
     public ?Snap $snap = null;
 
-    public string $name = '';
+    public string $title = '';
+
+    public string $description = '';
 
     protected $listeners = ['openEditModal'];
 
     public function openEditModal(Snap $snap)
     {
         $this->snap = $snap;
-        $this->name = $snap->name;
+        $this->title = $snap->title;
+        $this->description = $snap->description;
         $this->editModal = true;
     }
 
@@ -26,10 +29,13 @@ class EditSnapModal extends Component
     {
         if ($this->snap) {
             $this->validate([
-                'name' => 'required|min:3',
+                'title' => 'required|min:3',
             ]);
 
-            $this->snap->update(['name' => $this->name]);
+            $this->snap->update([
+                'title' => $this->title,
+                'description' => $this->description,
+            ]);
 
             $this->dispatch('snapUpdated');
             $this->closeModal();

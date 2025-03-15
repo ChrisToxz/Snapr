@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('snaps', function (Blueprint $table) {
             $table->ulid('id')->primary();
             $table->string('ident')->index();
-            $table->string('name');
+            $table->string('title');
             $table->text('description')->nullable();
             $table->string('path');
             $table->foreignIdFor(User::class);

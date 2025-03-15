@@ -10,7 +10,7 @@ class Snap extends Model
 {
     use HasUlids;
 
-    protected $fillable = ['ident', 'name', 'description', 'path'];
+    protected $fillable = ['ident', 'title', 'description', 'path'];
 
     public function getRouteKeyName(): string
     {
