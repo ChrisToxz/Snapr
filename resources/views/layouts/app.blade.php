@@ -14,15 +14,30 @@
                     {{ config("app.name") }}
                 </a>
             </div>
-            <div class="flex-none">
-                <ul class="menu menu-horizontal p-0">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Upload</a></li>
-                    <li><a @click="window.Livewire.dispatchTo('settings','toggleDrawer')">Settings</a></li>
+            <div class="flex-none rounded-xl">
+                <ul class="menu bg-base-200 lg:menu-horizontal rounded-box">
+                    <li>
+                        <a href="{{ route("dashboard") }}">
+                            <x-icon name="o-home" />
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <x-icon name="o-arrow-up-tray" />
+                            Upload
+                        </a>
+                    </li>
+                    <li>
+                        <a @click="window.Livewire.dispatchTo('settings','toggleDrawer')">
+                            <x-icon name="o-cog-6-tooth" />
+                            Settings
+                        </a>
+                    </li>
                     <li class="flex items-center">
                         <!-- Username dropdown with plain span for alignment -->
-                        <div class="dropdown dropdown-end">
-                            <span tabindex="0" class="cursor-pointer text-neutral-400">
+                        <div class="dropdown dropdown-end rounded-md">
+                            <span tabindex="0" class="cursor-pointer text-neutral-300">
                                 {{ auth()->user()->username }}
                             </span>
                             <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">

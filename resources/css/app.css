@@ -22,6 +22,10 @@
     @apply rounded-md;
 }
 
+.menu > li > a{
+    @apply rounded-md
+}
+
 
 /**
     The lines above are intact.

@@ -11,7 +11,7 @@ use Spatie\RouteAttributes\Attributes\Middleware;
 #[Middleware('auth')]
 class Dashboard
 {
-    #[Get('/')]
+    #[Get('/', 'dashboard')]
     #[Get('/dashboard')]
     public function __invoke(Request $request): View
     {
