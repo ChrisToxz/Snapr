@@ -1,4 +1,4 @@
-<div x-data="{ showModal: false }" class="card bg-base-200 shadow-xl">
+<div x-data="{ showModal: false }" class="card bg-base-200 rounded-md shadow-xl">
     <div class="card-body">
         <img src="{{ asset("storage/snaps/" . $snap->path) }}" alt="" class="h-64 w-full object-cover" />
         <h2 class="card-title">{{ $snap->title }}</h2>
