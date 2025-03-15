@@ -15,6 +15,12 @@ class SnapList extends Component
         return view('livewire.snap-list', ['snaps' => Snap::latest()->get()]);
     }
 
+    public function delete(Snap $snap)
+    {
+        $snap->delete();
+        $this->dispatch('snapUpdated');
+    }
+
     public function edit(Snap $snap)
     {
         $this->dispatch('openEditModal', $snap->ident);
