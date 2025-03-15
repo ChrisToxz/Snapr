@@ -16,7 +16,8 @@
         "livewire/livewire": "^3.6",
         "lorisleiva/laravel-actions": "^2.9",
         "robsontenorio/mary": "v2.x-dev",
-        "spatie/laravel-route-attributes": "^1.25"
+        "spatie/laravel-route-attributes": "^1.25",
+        "spatie/laravel-settings": "^3.4"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.5",
