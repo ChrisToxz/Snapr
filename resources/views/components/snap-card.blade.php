@@ -37,18 +37,22 @@
         </div>
 
         <dialog id="deleteDialog" class="modal">
-            <div class="modal-box">
+            <div class="modal-box bg-base-200">
                 <form method="dialog">
                     <button class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2">✕</button>
                 </form>
                 <h3 class="text-lg font-bold">Are you sure you want to delete?</h3>
                 <p>{{ $snap->title }}</p>
-                <x-button
-                    label="Delete"
-                    class="btn btn-danger"
-                    wire:click="delete('{{ $snap->ident }}')"
-                    spinner="delete"
-                />
+                <div class="modal-action">
+                    <form method="dialog">
+                        <x-button
+                            label="Delete"
+                            class="btn btn-error"
+                            wire:click="delete('{{ $snap->ident }}')"
+                            spinner="delete"
+                        />
+                    </form>
+                </div>
             </div>
         </dialog>
     </div>

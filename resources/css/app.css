@@ -18,6 +18,10 @@
     @apply rounded-md;
 }
 
+@utility modal-box {
+    @apply rounded-md;
+}
+
 
 /**
     The lines above are intact.
