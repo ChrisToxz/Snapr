@@ -15,13 +15,4 @@
         </div>
     @endif
     <livewire:edit-snap-modal />
-
-    <x-confirmation-modal
-        wireModel="confirmModal"
-        :title="$confirmationTitle"
-        :message="$confirmationMessage"
-        cancelMethod="cancelConfirmation"
-        confirmMethod="confirmAction"
-        confirmLabel="Delete"
-    />
 </div>
