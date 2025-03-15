@@ -13,6 +13,7 @@
                 </x-slot>
                 <x-slot:content>View</x-slot>
             </x-popover>
+
             <x-popover position="top">
                 <x-slot:trigger>
                     <x-icon
@@ -23,11 +24,13 @@
                 </x-slot>
                 <x-slot:content>Edit</x-slot>
             </x-popover>
+
             <x-popover position="top">
                 <x-slot:trigger>
                     <x-icon
                         name="o-trash"
                         class="cursor-pointer text-red-500 transition-colors duration-300 hover:text-red-700"
+                        wire:click="confirmDelete('{{ $snap->ident }}')"
                     />
                 </x-slot>
                 <x-slot:content>Delete</x-slot>
