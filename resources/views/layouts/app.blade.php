@@ -8,7 +8,7 @@
     </head>
     <body class="bg-base-100 text-white">
         <!-- Top Navbar -->
-        <nav class="navbar bg-base-200 shadow-md">
+        <nav class="navbar bg-base-200 shadow-md" x-data>
             <div class="flex-1">
                 <a class="btn btn-ghost text-xl normal-case" href="{{ url("/") }}">
                     {{ config("app.name") }}
@@ -18,6 +18,7 @@
                 <ul class="menu menu-horizontal p-0">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Upload</a></li>
+                    <li><a @click="window.Livewire.dispatchTo('settings','toggleDrawer')">Settings</a></li>
                     <li class="flex items-center">
                         <!-- Username dropdown with plain span for alignment -->
                         <div class="dropdown dropdown-end">
@@ -46,6 +47,7 @@
             {{ $slot }}
         </main>
 
+        <livewire:settings />
         <x-toast position="toast-top toast-center" />
     </body>
 </html>
