@@ -1,9 +1,22 @@
 #!/bin/bash
 
+LOG_FILE="/tmp/uploader.log" ## tail with: `tail -f /tmp/uploader.log`
+
+# Make sure log file exits or create it.
+if [ ! -f "$LOG_FILE" ]; then
+    touch "$LOG_FILE"
+fi
+# If --tail passed, tail log file
+if [ "$1" == "--tail" ]; then
+    echo "Debug mode: Tailing log file: ${LOG_FILE}"
+    tail -f "${LOG_FILE}"
+    exit 0
+fi
+
 ###
 # API Config
 ###
-API_URL="http://snapr.test/api/v1/upload"
+API_URL=""
 
 ####
 # Saving config
@@ -12,8 +25,6 @@ SAVE_SCREENSHOT=1
 BASE_DIR="${HOME}/screenshots"
 TARGET_DIR="${BASE_DIR}/$(date +%Y)-$(date +%m)"
 FILE_TEMPLATE="screenshot_#WINDOWNAME#_$(date +%Y%m%d_%H%M%S).png"
-
-LOG_FILE="/tmp/uploader.log" ## tail with: `tail -f /tmp/uploader.log`
 
 main() {
     echo "Endpoint: ${API_URL}"
