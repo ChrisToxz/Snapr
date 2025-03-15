@@ -11,6 +11,12 @@
     'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+@utility input {
+    @apply rounded-md;
+}
+@utility btn {
+    @apply rounded-md;
+}
 
 
 /**
