@@ -137,21 +137,39 @@ main() {
     flameshot gui -r > "$FILE"
 
     if [[ -s "$FILE" ]]; then
-        response=$(curl \
-            -s \
-            -H "Authorization: Bearer ${TOKEN}" \
-            -F "image=@${FILE}" \
-            -X POST \
-            ${API_URL})
+        choice=$(yad --on-top --width=400 --height=100 \
+            --buttons-layout=center \
+            --title="What to do with screenshot?" \
+            --button="Copy:0" \
+            --button="Upload:1" \
+            --button="Cancel:99" \
+            --text="Do you want to copy or upload?")
 
-        echo "Upload response:"
-        echo "${response}"
-
-        url=$(echo "${response}" | jq -r '.url')
-        echo "Image URL: ${url}"
-        echo "${url}" | xclip -selection clipboard
-
-        notify-send "File uploaded!"
+        rc=$?
+        case $rc in
+          0)  # Copy
+              xclip -selection clipboard -t image/png < "$FILE"
+              ;;
+          1)  # Upload
+              # TODO: Wrap in method
+              response=$(curl -s -H "Authorization: Bearer $TOKEN" -F "image=@$FILE" -X POST "$API_URL")
+              url=$(echo "$response" | jq -r '.url')
+              echo "$url" | xclip -selection clipboard
+              notify-send "Screenshot" "Uploaded! URL in clipboard."
+              ;;
+          99) # Cancel
+              echo "Cancelled"
+              rm "$FILE"
+              notify-send "Cancelled"
+              exit 1
+              ;;
+          *)  # If user closed with "X" or pressed Esc
+              echo "Closed the dialog some other way -> treat as Cancel"
+              rm "$FILE"
+              notify-send "Cancelled"
+              exit 1
+              ;;
+        esac
     else
         rm "${FILE}"
         notify-send "File not saved"
