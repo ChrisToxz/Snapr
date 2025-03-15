@@ -1,4 +1,4 @@
-<div x-data="{ showModal: false }" class="card bg-base-200 rounded-md shadow-xl">
+<div x-data="{ showModal: false }" class="card bg-base-200 rounded-xl shadow-xl">
     <div class="card-body">
         <img src="{{ asset("storage/snaps/" . $snap->path) }}" alt="" class="h-64 w-full object-cover" />
         <h2 class="card-title">{{ $snap->title }}</h2>
@@ -6,10 +6,12 @@
         <div class="mt-4 flex justify-end gap-2">
             <x-popover position="top">
                 <x-slot:trigger>
-                    <x-icon
-                        name="o-eye"
-                        class="cursor-pointer text-gray-500 transition-colors duration-300 hover:text-gray-700"
-                    />
+                    <a href="{{ url(route("snap.show", $snap->ident)) }}" target="_blank">
+                        <x-icon
+                            name="o-eye"
+                            class="cursor-pointer text-gray-500 transition-colors duration-300 hover:text-gray-700"
+                        />
+                    </a>
                 </x-slot>
                 <x-slot:content>View</x-slot>
             </x-popover>

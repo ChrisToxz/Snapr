@@ -7,7 +7,7 @@ use Spatie\RouteAttributes\Attributes\Get;
 
 class SnapController
 {
-    #[Get('/{snap}')]
+    #[Get('/{snap}', 'snap.show')]
     public function show(Snap $snap)
     {
         return view('snap.show', ['snap' => $snap]);
