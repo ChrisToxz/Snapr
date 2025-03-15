@@ -8,7 +8,9 @@ use Livewire\Component;
 class EditSnapModal extends Component
 {
     public bool $editModal = false;
+
     public ?Snap $snap = null;
+
     public string $name = '';
 
     protected $listeners = ['openEditModal'];
@@ -31,6 +33,7 @@ class EditSnapModal extends Component
 
             $this->dispatch('snapUpdated');
             $this->closeModal();
+
         }
     }
 

@@ -7,7 +7,6 @@ use Livewire\Component;
 
 class SnapList extends Component
 {
-
     protected $listeners = ['snapUpdated' => '$refresh'];
 
     public function render()
