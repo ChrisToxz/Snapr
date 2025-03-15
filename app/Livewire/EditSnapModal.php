@@ -4,9 +4,12 @@ namespace App\Livewire;
 
 use App\Models\Snap;
 use Livewire\Component;
+use Mary\Traits\Toast;
 
 class EditSnapModal extends Component
 {
+    use Toast;
+
     public bool $editModal = false;
 
     public ?Snap $snap = null;
@@ -37,6 +40,7 @@ class EditSnapModal extends Component
                 'description' => $this->description,
             ]);
 
+            $this->success('Snap updated!');
             $this->dispatch('snapUpdated');
             $this->closeModal();
 
