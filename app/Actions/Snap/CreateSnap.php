@@ -15,11 +15,13 @@ class CreateSnap
     {
         $file = StoreUploadedFile::run($request->file('image'));
 
-        return $request->user()->snaps()->create([
+        $snap = $request->user()->snaps()->create([
             'ident' => GenerateSnapIdentifier::run(),
             'title' => $request->file('image')->getClientOriginalName(),
             'description' => '',
             'path' => $file,
         ]);
+
+        return $snap;
     }
 }

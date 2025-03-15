@@ -3,15 +3,16 @@
 namespace App\Livewire;
 
 use App\Models\Snap;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[On('snapUpdated')]
 class SnapList extends Component
 {
-    protected $listeners = ['snapUpdated' => '$refresh'];
-
     public function render()
     {
-        return view('livewire.snap-list', ['snaps' => Snap::all()]);
+        // TODO: Infinite loading
+        return view('livewire.snap-list', ['snaps' => Snap::latest()->get()]);
     }
 
     public function edit(Snap $snap)

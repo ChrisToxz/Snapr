@@ -2,7 +2,7 @@
     @if ($snaps->count())
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
             @foreach ($snaps as $snap)
-                <x-snap-card :snap="$snap"/>
+                <x-snap-card :snap="$snap" />
             @endforeach
         </div>
     @else
@@ -14,6 +14,5 @@
             </div>
         </div>
     @endif
-
     <livewire:edit-snap-modal />
 </div>

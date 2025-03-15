@@ -1,3 +1,3 @@
 <x-app-layout>
-    <livewire:snap-list/>
+    <livewire:snap-list />
 </x-app-layout>
