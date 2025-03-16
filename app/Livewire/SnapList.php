@@ -12,10 +12,11 @@ class SnapList extends Component
 {
     use Toast;
 
+    public int $loadedSnaps = 3;
+
     public function render()
     {
-        // TODO: Infinite loading
-        return view('livewire.snap-list', ['snaps' => Snap::latest()->get()]);
+        return view('livewire.snap-list', ['snaps' => Snap::latest()->take($this->loadedSnaps)->get()]);
     }
 
     public function delete(Snap $snap)
@@ -27,7 +28,21 @@ class SnapList extends Component
 
     public function edit(Snap $snap)
     {
-
         $this->dispatch('openEditModal', $snap->ident);
+    }
+
+    public bool $endOfSnaps = false;
+
+    public function loadMore(): void
+    {
+        $totalSnaps = Snap::count();
+
+        if ($this->loadedSnaps < $totalSnaps) {
+            $this->loadedSnaps += 3;
+        }
+
+        if ($this->loadedSnaps >= $totalSnaps) {
+            $this->dispatch('end-of-snaps');
+        }
     }
 }
