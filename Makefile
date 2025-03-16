@@ -1,4 +1,4 @@
-.PHONY: check fix pint-check larastan
+.PHONY: check pint pint-check larastan
 
 check: pint-check larastan
 
@@ -8,5 +8,5 @@ pint-check:
 larastan:
 	./vendor/bin/phpstan analyse
 
-fix:
+pint:
 	./vendor/bin/pint
