@@ -20,9 +20,10 @@
                     :class="files ? 'pointer-events-none' : 'pointer-events-auto'"
                     wire:model="file"
                 />
-                @if ($file)
-                    <img src="{{ $file->temporaryUrl() }}" />
-                @endif
+                {{-- TODO: Prevent to try to preview file if uploaded file is not validated --}}
+                {{-- @if ($file) --}}
+                {{-- <img src="{{ $file->temporaryUrl() }}" /> --}}
+                {{-- @endif --}}
 
                 <template x-if="files !== null">
                     <div class="flex flex-col space-y-1 px-5 py-5">
