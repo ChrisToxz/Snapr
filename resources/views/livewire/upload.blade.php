@@ -6,7 +6,7 @@
         })
     "
 >
-    <x-modal wire:model="showModal" title="Upload File" box-class="bg-base-200 backdrop-blur">
+    <x-modal wire:model="showModal" title="Upload Snap" box-class="bg-base-200 backdrop-blur">
         <div class="bg-base-100">
             <div x-data="{ files: null }" id="FileUpload" class="bg-base-300 relative rounded-md">
                 <input
@@ -20,6 +20,10 @@
                     :class="files ? 'pointer-events-none' : 'pointer-events-auto'"
                     wire:model="file"
                 />
+                @if ($file)
+                    <img src="{{ $file->temporaryUrl() }}" />
+                @endif
+
                 <template x-if="files !== null">
                     <div class="flex flex-col space-y-1 px-5 py-5">
                         <div class="flex items-center justify-between">
@@ -47,6 +51,12 @@
                 </template>
             </div>
         </div>
+        <div class="flex flex-col items-center justify-center">
+            @error("file")
+                <span class="text-error mt-3">{{ $message }}</span>
+            @enderror
+        </div>
+
         <x-slot:actions>
             <x-button
                 label="Cancel"
