@@ -17,8 +17,8 @@
             </template>
         </div>
     @else
-        <div class="flex h-screen w-full items-center justify-center text-xl italic">
-            <div class="mt-[-33.33vh] text-center">
+        <div class="relative w-full">
+            <div class="absolute left-1/2 mt-[10vh] -translate-x-1/2 transform text-center text-xl italic">
                 No snaps found.
                 <br />
                 Upload your first one!
