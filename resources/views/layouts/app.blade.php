@@ -23,13 +23,13 @@
                         </a>
                     </li>
                     <li>
-                        <a>
+                        <a x-on:click="window.Livewire.dispatchTo('upload', 'toggleModal')">
                             <x-icon name="o-arrow-up-tray" />
                             Upload
                         </a>
                     </li>
                     <li>
-                        <a @click="window.Livewire.dispatchTo('settings','toggleDrawer')">
+                        <a x-on:click="window.Livewire.dispatchTo('settings', 'toggleDrawer')">
                             <x-icon name="o-cog-6-tooth" />
                             Settings
                         </a>
@@ -62,6 +62,7 @@
             {{ $slot }}
         </main>
 
+        <livewire:upload />
         <livewire:settings />
         <x-toast position="toast-top toast-center" />
     </body>
