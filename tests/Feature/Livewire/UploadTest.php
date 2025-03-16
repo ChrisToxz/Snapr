@@ -14,7 +14,7 @@ it('can upload snap', function () {
     $user = createUser();
     $this->actingAs($user);
 
-    $file = UploadedFile::fake()->image('testt.png');
+    $file = UploadedFile::fake()->image('test.png');
 
     Livewire::actingAs($user)->test(Upload::class)
         ->set('file', $file)
