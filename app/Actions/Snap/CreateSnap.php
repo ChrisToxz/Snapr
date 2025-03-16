@@ -11,6 +11,7 @@ class CreateSnap
 {
     use AsAction;
 
+    // TODO: Transform so it can also accept Livewire uploads (AKA not based on $request)
     public function handle(Request $request): Snap
     {
         $file = StoreUploadedFile::run($request->file('image'));

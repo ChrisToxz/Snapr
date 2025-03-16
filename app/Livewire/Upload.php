@@ -2,16 +2,19 @@
 
 namespace App\Livewire;
 
+use App\Actions\Snap\CreateSnap;
+use App\Actions\Snap\GenerateSnapIdentifier;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Mary\Traits\Toast;
 
 class Upload extends Component
 {
-    use WithFileUploads;
+    use Toast, WithFileUploads;
 
-    public $showModal = true;
+    public $showModal = false;
 
     #[Validate('required|image|max:4096')]
     public $file = '';
@@ -21,10 +24,20 @@ class Upload extends Component
         return view('livewire.upload');
     }
 
+    // TODO: Transform CreateSnap action to also work with Livewire
     public function save()
     {
-        dd($this->validate());
-
+        $this->validate();
+        auth()->user()->snaps()->create([
+            'ident' => GenerateSnapIdentifier::run(),
+            'title' => $this->file->getClientOriginalName(),
+            'description' => '',
+            'path' => $this->file->store(options: 'snaps'),
+        ]);
+        $this->dispatch('snapUpdated');
+        $this->file = '';
+        $this->toggleModal();
+        $this->success('Snap uploaded!');
     }
 
     #[On('toggleModal')]
