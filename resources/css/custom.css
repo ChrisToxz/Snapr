@@ -1,0 +1,50 @@
+@plugin "daisyui/theme" {
+    name: "black";
+    default: true;
+    prefersdark: true;
+    color-scheme: "dark";
+    --color-base-100: oklch(0% 0 0);
+    --color-base-200: oklch(19% 0 0);
+    --color-base-300: oklch(22% 0 0);
+    --color-base-content: oklch(87.609% 0 0);
+    --color-primary: oklch(35% 0 0);
+    --color-primary-content: oklch(100% 0 0);
+    --color-secondary: oklch(35% 0 0);
+    --color-secondary-content: oklch(100% 0 0);
+    --color-accent: oklch(35% 0 0);
+    --color-accent-content: oklch(100% 0 0);
+    --color-neutral: oklch(35% 0 0);
+    --color-neutral-content: oklch(100% 0 0);
+    --color-info: oklch(42% 0.199 265.638);
+    --color-info-content: oklch(100% 0 0);
+    --color-success: oklch(53% 0.157 131.589);
+    --color-success-content: oklch(100% 0 0);
+    --color-warning: oklch(76% 0.188 70.08);
+    --color-warning-content: oklch(0% 0 0);
+    --color-error: oklch(57% 0.245 27.325);
+    --color-error-content: oklch(100% 0 0);
+    --radius-selector: 0.5rem;
+    --radius-field: 0.5rem;
+    --radius-box: 0.5rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    --border: 1.5px;
+    --depth: 0;
+    --noise: 0;
+}
+
+
+/*@utility input {*/
+/*    @apply rounded-md;*/
+/*}*/
+/*@utility btn {*/
+/*    @apply rounded-md;*/
+/*}*/
+
+/*@utility modal-box {*/
+/*    @apply rounded-md;*/
+/*}*/
+
+/*.menu > li > a{*/
+/*    @apply rounded-md*/
+/*}*/

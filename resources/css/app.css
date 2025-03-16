@@ -1,9 +1,7 @@
 @import 'tailwindcss';
 
 @plugin "daisyui" {
-
     themes: black --default;
-
 }
 
 @theme {
@@ -11,21 +9,7 @@
     'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-@utility input {
-    @apply rounded-md;
-}
-@utility btn {
-    @apply rounded-md;
-}
-
-@utility modal-box {
-    @apply rounded-md;
-}
-
-.menu > li > a{
-    @apply rounded-md
-}
-
+@import './custom.css';
 
 /**
     The lines above are intact.
