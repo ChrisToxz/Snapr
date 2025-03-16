@@ -30,7 +30,7 @@ describe('auth', function () {
 
     it('renders menu', function () {
         $this->get('/dashboard')
-            ->assertSeeText(['Home', 'Upload', $this->user->username]);
+            ->assertSeeText(['Dashboard', 'Upload', $this->user->username]);
     });
 
 });
