@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Actions\Snap\CreateSnap;
-use App\Actions\Snap\GenerateSnapIdentifier;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -28,12 +27,7 @@ class Upload extends Component
     public function save()
     {
         $this->validate();
-        auth()->user()->snaps()->create([
-            'ident' => GenerateSnapIdentifier::run(),
-            'title' => $this->file->getClientOriginalName(),
-            'description' => '',
-            'path' => $this->file->store(options: 'snaps'),
-        ]);
+        CreateSnap::run($this->file);
         $this->dispatch('snapUpdated');
         $this->file = '';
         $this->toggleModal();

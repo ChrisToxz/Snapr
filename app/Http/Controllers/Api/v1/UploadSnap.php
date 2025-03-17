@@ -12,9 +12,8 @@ class UploadSnap
     #[Post('upload')]
     public function __invoke(UploadSnapRequest $request): JsonResponse
     {
-        $snap = CreateSnap::run($request);
+        $snap = CreateSnap::run($request->file('image'));
 
-        // TODO: Should return the url to copy.
         return response()->json($snap->toArray() + ['url' => url($snap->ident)]);
     }
 }

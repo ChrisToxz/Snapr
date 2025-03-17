@@ -4,23 +4,23 @@ namespace App\Actions\Snap;
 
 use App\Actions\StoreUploadedFile;
 use App\Models\Snap;
-use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class CreateSnap
 {
     use AsAction;
 
-    // TODO: Transform so it can also accept Livewire uploads (AKA not based on $request)
-    public function handle(Request $request): Snap
+    public function handle(UploadedFile $file): Snap
     {
-        $file = StoreUploadedFile::run($request->file('image'));
+        $path = StoreUploadedFile::run($file);
 
-        $snap = $request->user()->snaps()->create([
+        // ? TODO: Should I rely on auth() here? Or always pass the user?
+        $snap = auth()->user()->snaps()->create([
             'ident' => GenerateSnapIdentifier::run(),
-            'title' => $request->file('image')->getClientOriginalName(),
+            'title' => $file->getClientOriginalName(),
             'description' => '',
-            'path' => $file,
+            'path' => $path,
         ]);
 
         return $snap;
