@@ -31,7 +31,7 @@
                         name="o-trash"
                         class="cursor-pointer text-red-500 transition-colors duration-300 hover:text-red-700"
                         @click="showModal = true"
-                        onclick="deleteDialog.showModal()"
+                        @click="$dispatch('confirm-delete', { snapIdent: '{{ $snap->ident }}', snapTitle: '{{ $snap->title }}' })"
                     />
                 </x-slot>
                 <x-slot:content>Delete</x-slot>

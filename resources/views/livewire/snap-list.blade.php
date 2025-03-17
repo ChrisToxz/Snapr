@@ -2,7 +2,7 @@
     @if ($snaps->count())
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
             @foreach ($snaps as $snap)
-                <x-snap-card :snap="$snap" />
+                <x-snap-card :snap="$snap" wire:key="{{ $snap->id }}" />
             @endforeach
         </div>
         <div x-data="{ theEnd: false }" x-on:end-of-snaps.window="theEnd = true">
@@ -26,4 +26,35 @@
         </div>
     @endif
     <livewire:edit-snap-modal />
+
+    <div
+        x-data="{ showDeleteModal: false, snapIdent: null, snapTitle: '' }"
+        x-on:confirm-delete.window="showDeleteModal = true; snapIdent = $event.detail.snapIdent; snapTitle = $event.detail.snapTitle"
+        x-effect="
+            if (showDeleteModal) {
+                $refs.deleteModal.showModal()
+            } else {
+                $refs.deleteModal.close()
+            }
+        "
+    >
+        <dialog x-ref="deleteModal" class="modal">
+            <div class="modal-box bg-base-200">
+                <button class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2" @click="showDeleteModal = false">
+                    ✕
+                </button>
+                <h3 class="text-lg font-bold">
+                    Are you sure you want to delete
+                    <span x-text="snapTitle"></span>
+                    ?
+                </h3>
+                <div class="modal-action">
+                    <button class="btn btn-error" @click="$wire.delete(snapIdent); showDeleteModal = false">
+                        Delete
+                    </button>
+                    <button class="btn" @click="showDeleteModal = false">Cancel</button>
+                </div>
+            </div>
+        </dialog>
+    </div>
 </div>
