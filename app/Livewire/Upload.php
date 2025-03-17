@@ -37,6 +37,7 @@ class Upload extends Component
     #[On('toggleModal')]
     public function toggleModal()
     {
+        $this->file = ''; // TODO: Why this doesn't work?
         $this->showModal = ! $this->showModal;
     }
 }

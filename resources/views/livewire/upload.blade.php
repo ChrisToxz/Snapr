@@ -1,14 +1,43 @@
 <div
-    x-data
+    x-data="{ fileDropped: false, dragCounter: 0, files: null }"
     x-init="
-        window.addEventListener('dragenter', () => {
-            $wire.set('showModal', true)
+        window.addEventListener('dragenter', (e) => {
+            if (e.dataTransfer && e.dataTransfer.types.includes('Files')) {
+                dragCounter++
+                $wire.set('showModal', true)
+                fileDropped = false
+            }
         })
+
+        window.addEventListener('dragleave', (e) => {
+            if (e.dataTransfer && e.dataTransfer.types.includes('Files')) {
+                dragCounter--
+                if (dragCounter <= 0 && ! fileDropped) {
+                    $wire.set('showModal', false)
+                }
+            }
+        })
+
+        window.addEventListener('drop', (e) => {
+            // If the drop is happening on the file input area, let it handle it
+            if (! e.target.closest('#FileUpload')) {
+                e.preventDefault()
+            }
+            dragCounter = 0
+            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                fileDropped = true
+            } else {
+                fileDropped = false
+                $wire.set('showModal', false)
+            }
+        })
+
+        window.addEventListener('dragover', (e) => e.preventDefault())
     "
 >
-    <x-modal wire:model="showModal" title="Upload Snap" box-class="bg-base-200 backdrop-blur">
+    <x-modal wire:model="showModal" title="Upload Snap" box-class="bg-base-200 backdrop-blur" persistent>
         <div class="bg-base-100">
-            <div x-data="{ files: null }" id="FileUpload" class="bg-base-300 relative rounded-md">
+            <div id="FileUpload" class="bg-base-300 relative rounded-md">
                 <input
                     x-ref="fileInput"
                     type="file"
@@ -20,11 +49,6 @@
                     :class="files ? 'pointer-events-none' : 'pointer-events-auto'"
                     wire:model="file"
                 />
-                {{-- TODO: Prevent to try to preview file if uploaded file is not validated --}}
-                {{-- @if ($file) --}}
-                {{-- <img src="{{ $file->temporaryUrl() }}" /> --}}
-                {{-- @endif --}}
-
                 <template x-if="files !== null">
                     <div class="flex flex-col space-y-1 px-5 py-5">
                         <div class="flex items-center justify-between">
@@ -33,10 +57,10 @@
                                 type="button"
                                 class="text-red-500"
                                 @click="
-                                    files = null;
-                                    $refs.fileInput.value = ''
-                                    $wire.set('file', '')
-                                "
+                  files = null;
+                  $refs.fileInput.value = '';
+                  $wire.set('file', '');
+                "
                             >
                                 <x-icon name="o-trash" />
                             </button>
@@ -47,7 +71,6 @@
                     <div class="flex flex-col items-center justify-center space-y-2 py-10">
                         <x-icon name="o-cloud-arrow-up" class="h-10" />
                         <p class="text-gray-100">Drag your image here or click in this area.</p>
-                        {{-- <x-button>Select file</x-button> --}}
                     </div>
                 </template>
             </div>
@@ -62,8 +85,8 @@
             <x-button
                 label="Cancel"
                 class="btn btn-secondary"
-                @click="
-                $wire.set('showModal', false)"
+                @click="$wire.set('showModal', false); files = null;
+                  $refs.fileInput.value = '';"
             />
             <x-button label="Upload" class="btn btn-primary" wire:click="save" />
         </x-slot>
