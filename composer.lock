@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56c169b2cca94c6c72f0de0796c1286a",
+    "content-hash": "f557fc1bfa7b5f0d133ec99fd4d81d0a",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -4170,12 +4170,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/robsontenorio/mary.git",
-                "reference": "08ec5e23a8d77adcc288951b9d560de34e38bdde"
+                "reference": "d406c563eee612b7d10db7a1b266968ed62b9336"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robsontenorio/mary/zipball/08ec5e23a8d77adcc288951b9d560de34e38bdde",
-                "reference": "08ec5e23a8d77adcc288951b9d560de34e38bdde",
+                "url": "https://api.github.com/repos/robsontenorio/mary/zipball/d406c563eee612b7d10db7a1b266968ed62b9336",
+                "reference": "d406c563eee612b7d10db7a1b266968ed62b9336",
                 "shasum": ""
             },
             "require": {
@@ -4249,7 +4249,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-15T15:05:21+00:00"
+            "time": "2025-03-17T01:07:05+00:00"
         },
         {
             "name": "spatie/laravel-route-attributes",
