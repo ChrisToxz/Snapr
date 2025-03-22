@@ -2,20 +2,7 @@
     {{-- <meta property="og:image" content="{{ asset("storage/snaps/$snap->path") }}" /> --}}
     {{-- <meta name="twitter:card" content="summary_large_image"> --}}
 
-    <meta name="description" content="" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://snapr.32bit.nl/yvA9feEP" />
-    <meta property="og:title" content=" Snapr" />
-    <meta property="og:description" content="" />
     <meta property="og:image" content="{{ asset("storage/snaps/$snap->path") }}" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://snapr.32bit.nl/yvA9feEP" />
-    <meta property="twitter:title" content=" Snapr" />
-    <meta property="twitter:description" content="" />
     <meta property="twitter:image" content="{{ asset("storage/snaps/$snap->path") }}" />
     <div class="flex h-screen items-center justify-center">
         <div class="card bg-base-200 w-full rounded-xl shadow-xl">
