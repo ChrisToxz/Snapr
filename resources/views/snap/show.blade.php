@@ -1,5 +1,5 @@
 <x-dynamic-component :component="auth()->check() ? 'app-layout' : 'guest-layout'">
-    <meta property="og:image" content="{{ asset("storage/snaps/$snap->path") }}" />
+    {{-- <meta property="og:image" content="{{ asset("storage/snaps/$snap->path") }}" /> --}}
     {{-- <meta name="twitter:card" content="summary_large_image"> --}}
     <meta name="twitter:image" content="{{ asset("storage/snaps/$snap->path") }}" />
     <div class="flex h-screen items-center justify-center">
